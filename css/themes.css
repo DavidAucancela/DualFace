@@ -1,0 +1,186 @@
+/* ============================================================
+   themes.css — Sistema dual de temas DH / CU
+   Seres del Ecuador v1.0
+
+   REGLA ABSOLUTA: Todo color del sitio viene de aquí.
+   Ningún color se hardcodea fuera de este archivo
+   (excepción: SVGs ilustrativos físicos en /assets/images/).
+   ============================================================ */
+
+/* ── UNIVERSO 1: DIABLO HUMA ── */
+[data-theme="dh"] {
+  /* Fondos */
+  --bg-primary:      #0b1a0b;   /* verde noche profundo */
+  --bg-secondary:    #071207;   /* más oscuro para contraste */
+  --bg-overlay:      rgba(5, 14, 5, 0.85);
+
+  /* Acentos */
+  --accent:          #c44d00;   /* naranja fuego */
+  --accent-warm:     #f03a00;   /* fuego intenso */
+  --accent-soft:     rgba(196, 77, 0, 0.25);
+
+  /* Dorado */
+  --gold:            #e8a020;   /* oro inca */
+  --gold-soft:       rgba(232, 160, 32, 0.2);
+
+  /* Verde andino */
+  --green-deep:      #1e4a14;
+  --green-soft:      rgba(30, 74, 20, 0.4);
+
+  /* Texto */
+  --text:            #f5f0e8;
+  --text-dim:        rgba(245, 240, 232, 0.65);
+  --text-muted:      rgba(245, 240, 232, 0.35);
+
+  /* Bordes */
+  --border:          rgba(196, 77, 0, 0.2);
+  --border-hover:    rgba(196, 77, 0, 0.5);
+
+  /* Glow / sombras */
+  --glow:            rgba(196, 77, 0, 0.3);
+  --glow-strong:     rgba(240, 58, 0, 0.5);
+
+  /* Cursor */
+  --cursor-color:    #e8a020;
+
+  /* Progress bar */
+  --progress-from:   #f03a00;
+  --progress-to:     #e8a020;
+
+  /* Audio / UI */
+  --ui-active-bg:    #7a1500;
+  --ui-active-text:  #f0c8a0;
+}
+
+/* ── UNIVERSO 2: CUCURUCHO ── */
+[data-theme="cu"] {
+  /* Fondos */
+  --bg-primary:      #120820;   /* morado noche colonial */
+  --bg-secondary:    #0a0518;   /* más oscuro */
+  --bg-overlay:      rgba(10, 5, 24, 0.85);
+
+  /* Acentos */
+  --accent:          #7a0020;   /* carmesí */
+  --accent-warm:     #a01030;   /* carmesí cálido */
+  --accent-soft:     rgba(122, 0, 32, 0.25);
+
+  /* Dorado */
+  --gold:            #c89a40;   /* oro colonial */
+  --gold-soft:       rgba(200, 154, 64, 0.2);
+
+  /* Morado */
+  --violet-deep:     #3a0060;
+  --violet-soft:     rgba(58, 0, 96, 0.4);
+
+  /* Texto */
+  --text:            #f5f0e8;
+  --text-dim:        rgba(245, 240, 232, 0.65);
+  --text-muted:      rgba(245, 240, 232, 0.35);
+
+  /* Bordes */
+  --border:          rgba(122, 0, 32, 0.25);
+  --border-hover:    rgba(122, 0, 32, 0.55);
+
+  /* Glow / sombras */
+  --glow:            rgba(200, 154, 64, 0.25);
+  --glow-strong:     rgba(200, 154, 64, 0.45);
+
+  /* Cursor */
+  --cursor-color:    #c89a40;
+
+  /* Progress bar */
+  --progress-from:   #7a0020;
+  --progress-to:     #c89a40;
+
+  /* Audio / UI */
+  --ui-active-bg:    #2a0550;
+  --ui-active-text:  #e8d4a0;
+}
+
+/* ── TRANSICIÓN DE TEMA ──
+   Todos los elementos que dependen de variables de tema
+   hacen transición suave al cambiar data-theme.
+   -------------------------------------------------------- */
+html {
+  transition:
+    background-color var(--transition-theme, 0.8s ease),
+    color            var(--transition-theme, 0.8s ease);
+}
+
+/* Elementos que deben transicionar sus colores */
+.theme-transition,
+nav,
+.toggle-pill,
+.chapter-eyebrow,
+.progress-bar,
+.audio-btn,
+.data-chip,
+.section-divider {
+  transition:
+    background-color 0.8s ease,
+    border-color     0.8s ease,
+    color            0.6s ease,
+    box-shadow       0.8s ease;
+}
+
+/* ── COMPONENTES CON VARIANTES DE TEMA ── */
+
+/* Chip de dato */
+.data-chip {
+  border: 1px solid var(--border);
+  color: var(--text-dim);
+}
+.data-chip:hover {
+  border-color: var(--border-hover);
+  color: var(--text);
+}
+
+/* Línea de cita */
+.chapter-quote {
+  border-left: 2px solid var(--accent);
+  color: var(--text);
+}
+
+/* Número grande decorativo */
+.deco-number {
+  color: var(--accent);
+  opacity: 0.12;
+}
+
+/* Separador horizontal */
+.section-divider {
+  background: linear-gradient(
+    to right,
+    transparent,
+    var(--border-hover),
+    transparent
+  );
+}
+
+/* Dot de navegación activo */
+.nav-dot.is-active {
+  background:    var(--gold);
+  border-color:  var(--gold);
+}
+
+/* Glow en ilustraciones */
+.illustration-dh {
+  filter: drop-shadow(0 0 40px var(--glow));
+}
+.illustration-cu {
+  filter: drop-shadow(0 0 40px var(--glow));
+}
+
+/* ── CLASES DE COLOR SEMÁNTICO (independientes del tema) ──
+   Para casos donde el color sí importa sin importar el tema activo.
+   Usar con moderación.
+   -------------------------------------------------------- */
+.color-accent { color: var(--accent); }
+.color-gold   { color: var(--gold); }
+.color-text   { color: var(--text); }
+.color-dim    { color: var(--text-dim); }
+
+.bg-accent    { background-color: var(--accent); }
+.bg-gold      { background-color: var(--gold); }
+
+.border-accent { border-color: var(--border); }

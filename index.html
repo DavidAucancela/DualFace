@@ -1,0 +1,536 @@
+<!DOCTYPE html>
+<html lang="es" data-theme="dh">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Plataforma cultural inmersiva sobre dos íconos del patrimonio ecuatoriano: el Diablo Huma y el Cucurucho.">
+  <title>Seres del Ecuador — Diablo Huma & Cucurucho</title>
+
+  <!-- Open Graph -->
+  <meta property="og:title"       content="Seres del Ecuador">
+  <meta property="og:description" content="Dos figuras que definen el alma ecuatoriana.">
+  <meta property="og:type"        content="website">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;900&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap" rel="stylesheet">
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/themes.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/scroll.css">
+
+  <!-- GSAP -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js" defer></script>
+</head>
+<body>
+
+  <!-- ═══════════════════════════════════════════
+       CURSOR PERSONALIZADO
+  ════════════════════════════════════════════ -->
+  <div id="cursor-dot"  aria-hidden="true"></div>
+  <div id="cursor-ring" aria-hidden="true"></div>
+
+  <!-- ═══════════════════════════════════════════
+       PROGRESS BAR
+  ════════════════════════════════════════════ -->
+  <div id="progress-bar" aria-hidden="true"></div>
+
+  <!-- ═══════════════════════════════════════════
+       NAV PRINCIPAL
+  ════════════════════════════════════════════ -->
+  <nav id="main-nav" role="navigation" aria-label="Navegación principal">
+
+    <!-- Logo / título del sitio -->
+    <a href="#portal" class="nav-brand" data-i18n="nav.site_title">
+      Seres del Ecuador
+    </a>
+
+    <!-- Toggle de universo — LA PIEZA CENTRAL -->
+    <div class="toggle-pill" role="group" aria-label="Seleccionar universo cultural">
+      <button
+        id="toggle-dh"
+        class="toggle-btn is-active"
+        aria-pressed="true"
+        data-i18n="nav.toggle.dh"
+      >Diablo Huma</button>
+      <button
+        id="toggle-cu"
+        class="toggle-btn"
+        aria-pressed="false"
+        data-i18n="nav.toggle.cu"
+      >Cucurucho</button>
+    </div>
+
+    <!-- Controles de idioma y audio -->
+    <div class="nav-controls">
+      <button class="lang-btn is-active" data-lang-btn="es" aria-label="Español">ES</button>
+      <span class="nav-sep" aria-hidden="true">·</span>
+      <button class="lang-btn" data-lang-btn="en" aria-label="English">EN</button>
+      <button id="audio-btn" class="audio-btn" aria-label="Activar audio" title="Activar audio">
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+          <path id="audio-icon-wave" d="M9 3.5C10.5 4.5 11.5 6.1 11.5 8S10.5 11.5 9 12.5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/>
+          <path d="M6 5L3 7H1.5A.5.5 0 001 7.5v1A.5.5 0 001.5 9H3l3 2V5z" fill="currentColor"/>
+        </svg>
+      </button>
+    </div>
+
+    <!-- Dots de capítulo (visibles en desktop) -->
+    <div class="nav-chapters" id="nav-chapters" aria-hidden="true">
+      <span class="nav-dot is-active" data-chapter="0"></span>
+      <span class="nav-dot" data-chapter="1"></span>
+      <span class="nav-dot" data-chapter="2"></span>
+      <span class="nav-dot" data-chapter="3"></span>
+      <span class="nav-dot" data-chapter="4"></span>
+    </div>
+
+  </nav>
+
+  <!-- LABEL DE CAPÍTULO LATERAL -->
+  <div id="chapter-label" aria-live="polite" aria-atomic="true"></div>
+
+  <!-- ═══════════════════════════════════════════
+       PORTAL — HERO DE ENTRADA
+  ════════════════════════════════════════════ -->
+  <section id="portal" class="portal" aria-label="Portal de entrada">
+
+    <!-- Fondo atmosférico -->
+    <div class="portal-bg" aria-hidden="true">
+      <div class="portal-half portal-half--left"></div>
+      <div class="portal-half portal-half--right"></div>
+      <div class="portal-divider"></div>
+    </div>
+
+    <!-- Arco / puerta SVG -->
+    <div class="portal-arch" aria-hidden="true">
+      <svg viewBox="0 0 800 600" preserveAspectRatio="xMidYMid meet" fill="none">
+        <!-- Pilares -->
+        <rect x="80"  y="200" width="44" height="400" rx="2" fill="currentColor" opacity=".08"/>
+        <rect x="676" y="200" width="44" height="400" rx="2" fill="currentColor" opacity=".08"/>
+        <!-- Arco exterior -->
+        <path d="M80 200 Q80 20 400 20 Q720 20 720 200"
+              stroke="var(--accent)" stroke-width="1" opacity=".35"/>
+        <!-- Arco interior -->
+        <path d="M110 205 Q110 55 400 55 Q690 55 690 205"
+              stroke="var(--gold)" stroke-width=".5" opacity=".25"/>
+        <!-- Joya central -->
+        <circle cx="400" cy="20" r="18" stroke="var(--gold)" stroke-width=".8" opacity=".5"/>
+        <circle cx="400" cy="20" r="7"  fill="var(--gold)" opacity=".3"/>
+        <!-- Decoración pilares -->
+        <rect x="80"  y="185" width="44" height="20" fill="var(--accent)" opacity=".2"/>
+        <rect x="676" y="185" width="44" height="20" fill="var(--accent)" opacity=".2"/>
+        <!-- Banda inferior -->
+        <line x1="80" y1="590" x2="720" y2="590" stroke="var(--accent)" stroke-width=".5" opacity=".2"/>
+      </svg>
+    </div>
+
+    <!-- Siluetas de personajes -->
+    <div class="portal-figures" aria-hidden="true">
+      <!-- Silueta Diablo Huma (izquierda) -->
+      <svg class="figure-silhouette figure-silhouette--dh" viewBox="0 0 200 400" fill="none">
+        <ellipse cx="100" cy="155" rx="44" ry="54" fill="var(--accent)" opacity=".4"/>
+        <rect    x="58" y="205" width="84" height="175" rx="8" fill="var(--accent)" opacity=".4"/>
+        <!-- Cuernos -->
+        <ellipse cx="100" cy="93" rx="11" ry="28" fill="var(--accent)" opacity=".5"/>
+        <ellipse cx="72"  cy="102" rx="8" ry="22" fill="var(--accent-warm)" transform="rotate(-20 72 102)" opacity=".45"/>
+        <ellipse cx="128" cy="102" rx="8" ry="22" fill="var(--accent-warm)" transform="rotate(20 128 102)"  opacity=".45"/>
+        <ellipse cx="52"  cy="118" rx="7" ry="18" fill="var(--gold)" transform="rotate(-35 52 118)" opacity=".35"/>
+        <ellipse cx="148" cy="118" rx="7" ry="18" fill="var(--gold)" transform="rotate(35 148 118)"  opacity=".35"/>
+        <!-- Glow tips -->
+        <circle cx="100" cy="67"  r="4" fill="var(--gold)" opacity=".7"/>
+        <circle cx="66"  cy="82"  r="3" fill="var(--gold)" opacity=".5"/>
+        <circle cx="134" cy="82"  r="3" fill="var(--gold)" opacity=".5"/>
+      </svg>
+
+      <!-- Silueta Cucurucho (derecha) -->
+      <svg class="figure-silhouette figure-silhouette--cu" viewBox="0 0 200 400" fill="none">
+        <!-- Cono -->
+        <polygon points="100,8 55,190 145,190" fill="var(--gold)" opacity=".35"/>
+        <!-- Cuerpo -->
+        <rect x="48" y="188" width="104" height="195" rx="6" fill="var(--gold)" opacity=".3"/>
+        <!-- Ojos -->
+        <ellipse cx="84"  cy="165" rx="9" ry="12" fill="var(--bg-primary)" opacity=".6"/>
+        <ellipse cx="116" cy="165" rx="9" ry="12" fill="var(--bg-primary)" opacity=".6"/>
+        <!-- Cruz -->
+        <rect x="127" y="110" width="7" height="150" rx="2" fill="var(--accent)" opacity=".4"/>
+        <rect x="114" y="148" width="33" height="7"  rx="2" fill="var(--accent)" opacity=".4"/>
+      </svg>
+    </div>
+
+    <!-- Contenido central -->
+    <div class="portal-content">
+      <p class="portal-eyebrow text-eyebrow" data-i18n="portal.eyebrow">
+        Ecuador · Patrimonio Cultural Vivo
+      </p>
+
+      <h1 class="portal-title">
+        <span class="portal-title__dh" aria-hidden="true">Diablo Huma</span>
+        <span class="portal-title__sep" aria-hidden="true">&</span>
+        <span class="portal-title__cu" aria-hidden="true">Cucurucho</span>
+        <span class="sr-only">Diablo Huma y Cucurucho — Seres del Ecuador</span>
+      </h1>
+
+      <p class="portal-subtitle" data-i18n="portal.subtitle">
+        Dos figuras que definen el alma ecuatoriana.
+        Uno nace del sol y la tierra. El otro, de la fe y el silencio.
+      </p>
+
+      <div class="portal-scroll-hint" aria-hidden="true">
+        <div class="scroll-line"></div>
+        <span data-i18n="portal.scroll_hint">Desplázate para comenzar</span>
+      </div>
+    </div>
+
+    <!-- Partículas decorativas -->
+    <div class="portal-particles" aria-hidden="true">
+      <span class="particle" style="--x:12%;--y:58%;--size:2px;--dur:9s;--delay:0s;"></span>
+      <span class="particle" style="--x:25%;--y:42%;--size:2px;--dur:12s;--delay:2s;"></span>
+      <span class="particle" style="--x:68%;--y:55%;--size:2px;--dur:7s;--delay:.8s;"></span>
+      <span class="particle" style="--x:82%;--y:38%;--size:3px;--dur:10s;--delay:3s;"></span>
+      <span class="particle" style="--x:48%;--y:72%;--size:2px;--dur:8s;--delay:.3s;"></span>
+      <span class="particle" style="--x:74%;--y:30%;--size:2px;--dur:11s;--delay:4s;"></span>
+      <span class="particle" style="--x:35%;--y:65%;--size:2px;--dur:9s;--delay:1.5s;"></span>
+      <span class="particle" style="--x:90%;--y:50%;--size:2px;--dur:13s;--delay:.6s;"></span>
+    </div>
+
+  </section>
+
+  <!-- ═══════════════════════════════════════════
+       UNIVERSO — DIABLO HUMA
+       (4 capítulos narrativos con scroll)
+  ════════════════════════════════════════════ -->
+  <div class="scroll-driver" data-universe="dh" aria-label="Historia del Diablo Huma">
+    <div class="stage" id="stage-dh">
+
+      <!-- Capítulo 1: El Origen -->
+      <section class="chapter" id="dh-ch1" data-chapter="1" aria-label="Origen del Diablo Huma">
+        <div class="layer layer-bg" data-speed="0.2">
+          <div class="chapter-bg chapter-bg--mountains"></div>
+        </div>
+        <div class="layer layer-mid" data-speed="0.5">
+          <div class="chapter-figure">
+            <!-- SVG ilustración del Diablo Huma — se añade en siguiente iteración -->
+            <div class="figure-placeholder figure-placeholder--dh" aria-hidden="true"></div>
+          </div>
+        </div>
+        <div class="layer layer-fg" data-speed="0.8">
+          <div class="chapter-text chapter-text--right">
+            <span class="chapter-eyebrow text-eyebrow color-accent" data-i18n="dh.ch1.eyebrow">01 — Origen</span>
+            <h2 class="chapter-title text-title-lg" data-i18n="dh.ch1.title">El Ser de Dos Rostros</h2>
+            <p  class="chapter-body text-body" data-i18n="dh.ch1.body"></p>
+            <blockquote class="chapter-quote" data-i18n="dh.ch1.quote"></blockquote>
+          </div>
+        </div>
+      </section>
+
+      <!-- Capítulo 2: El Inti Raymi -->
+      <section class="chapter" id="dh-ch2" data-chapter="2" aria-label="El Inti Raymi">
+        <div class="layer layer-bg" data-speed="0.2">
+          <div class="chapter-bg chapter-bg--fire"></div>
+        </div>
+        <div class="layer layer-mid" data-speed="0.5">
+          <div class="chapter-data-grid">
+            <div class="data-card">
+              <span class="data-card__num">Junio</span>
+              <span class="data-card__label" data-i18n="nav.chapters.ch2">Ritual</span>
+            </div>
+            <div class="data-card">
+              <span class="data-card__num">4</span>
+              <span class="data-card__label" data-i18n="dh.data.days_label">Días de danza</span>
+            </div>
+            <div class="data-card">
+              <span class="data-card__num">Sierra</span>
+              <span class="data-card__label" data-i18n="dh.data.origin_label">Origen</span>
+            </div>
+          </div>
+        </div>
+        <div class="layer layer-fg" data-speed="0.8">
+          <div class="chapter-text chapter-text--left">
+            <span class="chapter-eyebrow text-eyebrow color-accent" data-i18n="dh.ch2.eyebrow">02 — Ritual</span>
+            <h2 class="chapter-title text-title-lg" data-i18n="dh.ch2.title">El Inti Raymi</h2>
+            <p  class="chapter-body text-body" data-i18n="dh.ch2.body"></p>
+            <blockquote class="chapter-quote" data-i18n="dh.ch2.quote"></blockquote>
+          </div>
+        </div>
+      </section>
+
+      <!-- Capítulo 3: La Máscara -->
+      <section class="chapter" id="dh-ch3" data-chapter="3" aria-label="La Máscara del Diablo Huma">
+        <div class="layer layer-bg" data-speed="0.2">
+          <div class="chapter-bg chapter-bg--dark"></div>
+        </div>
+        <div class="layer layer-mid" data-speed="0.4">
+          <div class="chapter-mask-detail">
+            <div class="mask-stat">
+              <span class="mask-stat__num" data-i18n-attr="aria-label:dh.data.horns_label">12</span>
+              <span class="mask-stat__label" data-i18n="dh.data.horns_label">Cuernos · meses del año</span>
+            </div>
+            <div class="mask-stat">
+              <span class="mask-stat__num">2</span>
+              <span class="mask-stat__label" data-i18n="dh.data.faces_label">Caras · dualidad andina</span>
+            </div>
+            <div class="mask-stat">
+              <span class="mask-stat__num">∞</span>
+              <span class="mask-stat__label">Colores · chakana andina</span>
+            </div>
+          </div>
+        </div>
+        <div class="layer layer-fg" data-speed="0.8">
+          <div class="chapter-text chapter-text--center">
+            <span class="chapter-eyebrow text-eyebrow color-accent" data-i18n="dh.ch3.eyebrow">03 — La Máscara</span>
+            <h2 class="chapter-title text-title-lg" data-i18n="dh.ch3.title">Doce Cuernos, Dos Caras</h2>
+            <p  class="chapter-body text-body" data-i18n="dh.ch3.body"></p>
+            <blockquote class="chapter-quote" data-i18n="dh.ch3.quote"></blockquote>
+          </div>
+        </div>
+      </section>
+
+      <!-- Capítulo 4: Hoy -->
+      <section class="chapter" id="dh-ch4" data-chapter="4" aria-label="El Diablo Huma hoy">
+        <div class="layer layer-bg" data-speed="0.2">
+          <div class="chapter-bg chapter-bg--landscape"></div>
+        </div>
+        <div class="layer layer-fg" data-speed="0.8">
+          <div class="chapter-text chapter-text--right">
+            <span class="chapter-eyebrow text-eyebrow color-accent" data-i18n="dh.ch4.eyebrow">04 — Hoy</span>
+            <h2 class="chapter-title text-title-lg" data-i18n="dh.ch4.title">Una Tradición Viva</h2>
+            <p  class="chapter-body text-body" data-i18n="dh.ch4.body"></p>
+            <blockquote class="chapter-quote" data-i18n="dh.ch4.quote"></blockquote>
+          </div>
+        </div>
+      </section>
+
+    </div><!-- #stage-dh -->
+  </div><!-- scroll-driver dh -->
+
+
+  <!-- ═══════════════════════════════════════════
+       UNIVERSO — CUCURUCHO
+  ════════════════════════════════════════════ -->
+  <div class="scroll-driver" data-universe="cu" aria-label="Historia del Cucurucho">
+    <div class="stage" id="stage-cu">
+
+      <!-- Capítulo 1: El Origen -->
+      <section class="chapter" id="cu-ch1" data-chapter="1" aria-label="Origen del Cucurucho">
+        <div class="layer layer-bg" data-speed="0.2">
+          <div class="chapter-bg chapter-bg--colonial"></div>
+        </div>
+        <div class="layer layer-mid" data-speed="0.5">
+          <div class="chapter-figure">
+            <div class="figure-placeholder figure-placeholder--cu" aria-hidden="true"></div>
+          </div>
+        </div>
+        <div class="layer layer-fg" data-speed="0.8">
+          <div class="chapter-text chapter-text--left">
+            <span class="chapter-eyebrow text-eyebrow color-gold" data-i18n="cu.ch1.eyebrow">01 — Origen</span>
+            <h2 class="chapter-title text-title-lg" data-i18n="cu.ch1.title">El Penitente Anónimo</h2>
+            <p  class="chapter-body text-body" data-i18n="cu.ch1.body"></p>
+            <blockquote class="chapter-quote" data-i18n="cu.ch1.quote"></blockquote>
+          </div>
+        </div>
+      </section>
+
+      <!-- Capítulo 2: Semana Santa -->
+      <section class="chapter" id="cu-ch2" data-chapter="2" aria-label="La Semana Santa">
+        <div class="layer layer-bg" data-speed="0.2">
+          <div class="chapter-bg chapter-bg--night-city"></div>
+        </div>
+        <div class="layer layer-mid" data-speed="0.5">
+          <div class="chapter-data-grid">
+            <div class="data-card">
+              <span class="data-card__num">1534</span>
+              <span class="data-card__label" data-i18n="cu.data.year_label">Año · franciscanos</span>
+            </div>
+            <div class="data-card">
+              <span class="data-card__num">Viernes</span>
+              <span class="data-card__label">Santo · Quito</span>
+            </div>
+            <div class="data-card">
+              <span class="data-card__num">100<small>kg</small></span>
+              <span class="data-card__label" data-i18n="cu.data.cross_label">Kilos de cruz</span>
+            </div>
+          </div>
+        </div>
+        <div class="layer layer-fg" data-speed="0.8">
+          <div class="chapter-text chapter-text--right">
+            <span class="chapter-eyebrow text-eyebrow color-gold" data-i18n="cu.ch2.eyebrow">02 — Semana Santa</span>
+            <h2 class="chapter-title text-title-lg" data-i18n="cu.ch2.title">La Procesión del Viernes Santo</h2>
+            <p  class="chapter-body text-body" data-i18n="cu.ch2.body"></p>
+            <blockquote class="chapter-quote" data-i18n="cu.ch2.quote"></blockquote>
+          </div>
+        </div>
+      </section>
+
+      <!-- Capítulo 3: El Anonimato -->
+      <section class="chapter" id="cu-ch3" data-chapter="3" aria-label="El anonimato del Cucurucho">
+        <div class="layer layer-bg" data-speed="0.2">
+          <div class="chapter-bg chapter-bg--dark"></div>
+        </div>
+        <div class="layer layer-mid" data-speed="0.4">
+          <div class="chapter-mask-detail">
+            <div class="mask-stat">
+              <span class="mask-stat__num">0</span>
+              <span class="mask-stat__label" data-i18n="cu.data.anon_label">Identidad visible</span>
+            </div>
+            <div class="mask-stat">
+              <span class="mask-stat__num">1</span>
+              <span class="mask-stat__label">Voto sagrado</span>
+            </div>
+            <div class="mask-stat">
+              <span class="mask-stat__num">∞</span>
+              <span class="mask-stat__label" data-i18n="cu.data.promise_label">Promesas de fe</span>
+            </div>
+          </div>
+        </div>
+        <div class="layer layer-fg" data-speed="0.8">
+          <div class="chapter-text chapter-text--center">
+            <span class="chapter-eyebrow text-eyebrow color-gold" data-i18n="cu.ch3.eyebrow">03 — El Anonimato</span>
+            <h2 class="chapter-title text-title-lg" data-i18n="cu.ch3.title">El Voto Personal</h2>
+            <p  class="chapter-body text-body" data-i18n="cu.ch3.body"></p>
+            <blockquote class="chapter-quote" data-i18n="cu.ch3.quote"></blockquote>
+          </div>
+        </div>
+      </section>
+
+      <!-- Capítulo 4: Hoy -->
+      <section class="chapter" id="cu-ch4" data-chapter="4" aria-label="El Cucurucho hoy">
+        <div class="layer layer-bg" data-speed="0.2">
+          <div class="chapter-bg chapter-bg--quito"></div>
+        </div>
+        <div class="layer layer-fg" data-speed="0.8">
+          <div class="chapter-text chapter-text--left">
+            <span class="chapter-eyebrow text-eyebrow color-gold" data-i18n="cu.ch4.eyebrow">04 — Hoy</span>
+            <h2 class="chapter-title text-title-lg" data-i18n="cu.ch4.title">Quito, Patrimonio Vivo</h2>
+            <p  class="chapter-body text-body" data-i18n="cu.ch4.body"></p>
+            <blockquote class="chapter-quote" data-i18n="cu.ch4.quote"></blockquote>
+          </div>
+        </div>
+      </section>
+
+    </div><!-- #stage-cu -->
+  </div><!-- scroll-driver cu -->
+
+
+  <!-- ═══════════════════════════════════════════
+       SECCIÓN FINAL — IDENTIDAD COMPARTIDA
+  ════════════════════════════════════════════ -->
+  <section id="final" class="section-final" aria-label="Identidad ecuatoriana">
+    <div class="final-inner">
+
+      <!-- Símbolo — chakana simplificada -->
+      <div class="final-symbol" aria-hidden="true">
+        <svg viewBox="0 0 70 70" fill="none">
+          <circle cx="35" cy="35" r="33" stroke="currentColor" stroke-width=".5" opacity=".2"/>
+          <rect x="24" y="8"  width="22" height="54" rx="2" fill="currentColor" opacity=".08" stroke="currentColor" stroke-width=".5" opacity=".2"/>
+          <rect x="8"  y="24" width="54" height="22" rx="2" fill="currentColor" opacity=".08" stroke="currentColor" stroke-width=".5" opacity=".2"/>
+          <circle cx="35" cy="35" r="7" fill="var(--gold)" opacity=".3" stroke="var(--gold)" stroke-width=".6" opacity=".5"/>
+        </svg>
+      </div>
+
+      <span class="final-eyebrow text-eyebrow" data-i18n="final.eyebrow">Identidad Ecuatoriana</span>
+
+      <h2 class="final-title">
+        <em class="color-accent" data-i18n="final.title">Tierra y Fe</em>
+      </h2>
+      <p class="final-subtitle text-title-md color-gold" data-i18n="final.subtitle">Una Sola Identidad</p>
+
+      <div class="final-divider" aria-hidden="true"></div>
+
+      <p class="final-body text-quote" data-i18n="final.body"></p>
+      <p class="final-coda text-label" data-i18n="final.coda"></p>
+
+      <!-- Dúo de personajes -->
+      <div class="final-duo" aria-hidden="true">
+        <div class="duo-item">
+          <div class="duo-circle duo-circle--dh">D</div>
+          <span class="text-label" data-i18n="dh.name">Diablo Huma</span>
+        </div>
+        <div class="duo-sep"></div>
+        <div class="duo-item">
+          <div class="duo-circle duo-circle--cu">C</div>
+          <span class="text-label" data-i18n="cu.name">Cucurucho</span>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- ═══════════════════════════════════════════
+       QUIZ — ¿Cuál eres tú?
+  ════════════════════════════════════════════ -->
+  <section id="quiz" class="section-quiz" aria-label="Quiz de identidad cultural">
+    <div class="quiz-inner">
+      <span class="text-eyebrow color-accent" data-i18n="quiz.subtitle">Un ejercicio de exploración cultural</span>
+      <h2 class="text-title-md" data-i18n="quiz.title">¿Cuál eres tú?</h2>
+      <p class="quiz-disclaimer text-label" data-i18n="quiz.disclaimer"></p>
+
+      <div id="quiz-container" class="quiz-container">
+        <!-- Se puebla dinámicamente por quiz.js -->
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ═══════════════════════════════════════════
+       GALERÍA
+  ════════════════════════════════════════════ -->
+  <section id="gallery" class="section-gallery" aria-label="Galería fotográfica">
+    <div class="gallery-header">
+      <span class="text-eyebrow color-accent">Galería</span>
+      <h2 class="text-title-md" data-i18n="gallery.title">Galería</h2>
+    </div>
+    <div id="gallery-grid" class="gallery-grid">
+      <!-- Se puebla dinámicamente por gallery.js -->
+      <!-- Placeholder visual -->
+      <div class="gallery-placeholder" aria-label="Fotografías próximamente">
+        <span class="text-label color-dim">Fotografías · próximamente</span>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ═══════════════════════════════════════════
+       LIGHTBOX (oculto por defecto)
+  ════════════════════════════════════════════ -->
+  <div id="lightbox" class="lightbox" role="dialog" aria-modal="true" aria-label="Galería ampliada" hidden>
+    <button class="lightbox-close" id="lightbox-close" data-i18n-attr="aria-label:gallery.close" aria-label="Cerrar">✕</button>
+    <button class="lightbox-prev"  id="lightbox-prev"  data-i18n-attr="aria-label:gallery.prev"  aria-label="Anterior">‹</button>
+    <button class="lightbox-next"  id="lightbox-next"  data-i18n-attr="aria-label:gallery.next"  aria-label="Siguiente">›</button>
+    <figure class="lightbox-figure">
+      <img id="lightbox-img" src="" alt="" class="lightbox-image">
+      <figcaption id="lightbox-caption" class="lightbox-caption text-label"></figcaption>
+    </figure>
+  </div>
+
+
+  <!-- ═══════════════════════════════════════════
+       FOOTER
+  ════════════════════════════════════════════ -->
+  <footer class="site-footer" role="contentinfo">
+    <p class="footer-title font-display" data-i18n="footer.title">Seres del Ecuador</p>
+    <p class="footer-credits text-label" data-i18n="footer.credits">Un proyecto de preservación cultural digital</p>
+    <nav class="footer-links" aria-label="Enlaces del pie de página">
+      <button class="footer-link" data-i18n="footer.sources">Ver fuentes</button>
+      <span aria-hidden="true">·</span>
+      <button class="footer-link" id="footer-share" data-i18n="footer.share">Compartir</button>
+    </nav>
+  </footer>
+
+
+  <!-- ═══════════════════════════════════════════
+       SCRIPTS
+  ════════════════════════════════════════════ -->
+  <script src="js/i18n.js"></script>
+  <script src="js/theme.js"></script>
+  <script src="js/scroll.js"></script>
+  <script src="js/quiz.js"></script>
+  <script src="js/gallery.js"></script>
+  <script src="js/audio.js"></script>
+  <script src="js/main.js"></script>
+
+</body>
+</html>

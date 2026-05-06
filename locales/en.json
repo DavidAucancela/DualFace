@@ -1,0 +1,192 @@
+{
+  "meta": {
+    "title": "Seres del Ecuador — Diablo Huma & Cucurucho",
+    "description": "An immersive cultural platform about two icons of Ecuadorian heritage: the Diablo Huma and the Cucurucho."
+  },
+
+  "nav": {
+    "site_title": "Seres del Ecuador",
+    "toggle": {
+      "dh": "Diablo Huma",
+      "cu": "Cucurucho"
+    },
+    "lang": {
+      "es": "ES",
+      "en": "EN"
+    },
+    "audio": {
+      "on":  "Mute",
+      "off": "Enable audio"
+    },
+    "chapters": {
+      "portal":   "Home",
+      "ch1":      "Origins",
+      "ch2":      "Ritual",
+      "ch3":      "The Being",
+      "ch4":      "Today",
+      "final":    "Identity"
+    }
+  },
+
+  "portal": {
+    "eyebrow":   "Ecuador · Living Cultural Heritage",
+    "title":     "Beings of Identity",
+    "subtitle":  "Two figures that define the Ecuadorian soul. One born of sun and earth. The other, of faith and silence.",
+    "scroll_hint": "Scroll to begin"
+  },
+
+  "dh": {
+    "name":      "Diablo Huma",
+    "world":     "Spirit of the Andes",
+
+    "ch1": {
+      "eyebrow":  "01 — Origins",
+      "title":    "The Two-Faced Being",
+      "body":     "The Diablo Huma — whose name in Kichwa means 'Devil's Head' — is not a demon in the Western sense. It is a sacred figure of Ecuador's indigenous Kichwa people, guardian of the cycles of the sun and the wind.",
+      "quote":    "Not the devil of the conquistadors. It is the indomitable spirit that no time could silence."
+    },
+
+    "ch2": {
+      "eyebrow":  "02 — Ritual",
+      "title":    "The Inti Raymi",
+      "body":     "The Festival of the Sun is celebrated each June, around the solstice. The Diablo Huma leads the dance carrying a chicote — a ceremonial whip — with which it cleanses the path of bad energies. The dancer can perform for up to four consecutive days, as an offering to Taita Inti (Father Sun).",
+      "quote":    "The earth shakes when the Diablo Huma dances."
+    },
+
+    "ch3": {
+      "eyebrow":  "03 — The Mask",
+      "title":    "Twelve Horns, Two Faces",
+      "body":     "The twelve horns represent the twelve months of the year. The two faces embody Andean duality: Hanan Pacha (the upper world) and Kay Pacha (the present world). The colors of the costume — red, green, yellow, blue — are the Andean chakana woven in wool.",
+      "quote":    "Neither face looks back. Both move forward, simultaneously, in all directions."
+    },
+
+    "ch4": {
+      "eyebrow":  "04 — Today",
+      "title":    "A Living Tradition",
+      "body":     "The Inti Raymi is celebrated today in the provinces of Imbabura, Pichincha, and Cotopaxi. Communities such as Otavalo, Cayambe, and Latacunga keep the dance alive. The tradition faces the challenge of preserving itself without becoming a tourist spectacle.",
+      "quote":    "Every June, the páramos remember who we are."
+    },
+
+    "data": {
+      "horns_label":     "Horns · months of the year",
+      "faces_label":     "Faces · Andean duality",
+      "days_label":      "Days of dance · Inti Raymi",
+      "origin_label":    "Origin"
+    }
+  },
+
+  "cu": {
+    "name":      "The Cucurucho",
+    "world":     "Faith and Silence",
+
+    "ch1": {
+      "eyebrow":  "01 — Origins",
+      "title":    "The Anonymous Penitent",
+      "body":     "The Cucurucho is the most iconic figure of Quito's Holy Week. Dressed in white, with a conical hood covering the entire face, it marches in silence carrying an enormous wooden cross. Under the hood there is no identity: the rich and the poor are equal before God.",
+      "quote":    "The silence is so deep you can hear the white robes brushing against the centuries-old cobblestones."
+    },
+
+    "ch2": {
+      "eyebrow":  "02 — Holy Week",
+      "title":    "The Good Friday Procession",
+      "body":     "Every Good Friday, thousands of cucuruchos descend into Quito's Historic Center for the procession of Jesús del Gran Poder — the oldest and most massive in Latin America. The route passes through 16th-century colonial churches: La Compañía, San Francisco, La Merced.",
+      "quote":    "They walk barefoot over the colonial cobblestones."
+    },
+
+    "ch3": {
+      "eyebrow":  "03 — Anonymity",
+      "title":    "The Personal Vow",
+      "body":     "Many cucuruchos fulfill a promise made in moments of anguish or gratitude. Anonymity is essential: the hood erases social rank. Some carry crosses weighing up to one hundred kilograms. Others drag chains. It is the payment of a sacred debt.",
+      "quote":    "Faith has no surname beneath the white hood."
+    },
+
+    "ch4": {
+      "eyebrow":  "04 — Today",
+      "title":    "Quito, Living Heritage",
+      "body":     "Since UNESCO declared Quito's Historic Center a World Heritage Site in 1978, the procession has also become an act of urban identity. The 21st-century cucurucho coexists between authentic devotion and the gaze of international tourism.",
+      "quote":    "Tradition is not preserved in a museum. It is walked."
+    },
+
+    "data": {
+      "year_label":      "Year · Franciscan arrival",
+      "anon_label":      "Visible identity · anonymity",
+      "cross_label":     "Kilos of cross · maximum",
+      "promise_label":   "Vows fulfilled · faith"
+    }
+  },
+
+  "final": {
+    "eyebrow":  "Ecuadorian Identity",
+    "title":    "Earth and Faith",
+    "subtitle": "A Single Identity",
+    "body":     "The Diablo Huma and the Cucurucho are not opposites. They are Ecuador's two pulses: the indigenous heartbeat from the Andes and the mestizo heartbeat from the colonial churches. Both dance, both fall silent, both carry something sacred.",
+    "coda":     "What does it mean to be Ecuadorian? The answer lies in both."
+  },
+
+  "quiz": {
+    "title":      "Which one are you?",
+    "subtitle":   "A cultural exploration exercise",
+    "disclaimer": "This quiz is a playful cultural resource with no ethnic or diagnostic implications.",
+    "start":      "Begin",
+    "next":       "Next",
+    "restart":    "Try again",
+    "result":     {
+      "dh": {
+        "title":  "You are Diablo Huma",
+        "body":   "You carry the earth and wind within. Your spirit is free, dual, untamed. Music and dance are your language."
+      },
+      "cu": {
+        "title":  "You are Cucurucho",
+        "body":   "Your strength comes from silence and faith. You carry what others cannot see. Your devotion is your deepest identity."
+      }
+    },
+    "share": "Share result",
+    "questions": [
+      {
+        "q":   "How do you express what you feel?",
+        "a":   "By dancing, moving, with my body",
+        "b":   "In silence, inwardly"
+      },
+      {
+        "q":   "Which element represents you most?",
+        "a":   "Fire and wind",
+        "b":   "Stone and faith"
+      },
+      {
+        "q":   "Do you prefer to celebrate in?",
+        "a":   "A plaza, in sunlight, with music",
+        "b":   "A church or space for reflection"
+      },
+      {
+        "q":   "Your identity is?",
+        "a":   "Visible, colorful, proud",
+        "b":   "Deep, anonymous, intimate"
+      },
+      {
+        "q":   "What do you carry within?",
+        "a":   "The inheritance of the land",
+        "b":   "A personal vow, a promise"
+      },
+      {
+        "q":   "Which month belongs to you?",
+        "a":   "June — the solstice and the festival",
+        "b":   "April — reflection and procession"
+      }
+    ]
+  },
+
+  "gallery": {
+    "title":      "Gallery",
+    "close":      "Close",
+    "prev":       "Previous",
+    "next":       "Next",
+    "credit":     "Photo:"
+  },
+
+  "footer": {
+    "title":      "Seres del Ecuador",
+    "credits":    "A digital cultural preservation project",
+    "sources":    "View sources and references",
+    "share":      "Share this site"
+  }
+}

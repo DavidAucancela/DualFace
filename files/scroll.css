@@ -1,0 +1,291 @@
+/* ============================================================
+   scroll.css — Scroll narrativo, sticky stage, parallax, capítulos
+   Seres del Ecuador v1.0
+   ============================================================ */
+
+/* ── SCROLL DRIVER — captura el scroll ── */
+.scroll-driver {
+  position: relative;
+  height: 600vh; /* 4 capítulos × ~150vh cada uno */
+}
+
+/* ── STAGE — viewport fijo (Persepolis) ── */
+.stage {
+  position: sticky;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+}
+
+/* ── CAPÍTULOS — apilados dentro del stage ── */
+.chapter {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 1.4s ease;
+  will-change: opacity;
+}
+
+.chapter.is-active {
+  opacity: 1;
+  pointer-events: all;
+}
+
+/* ── CAPAS DE PARALLAX ── */
+.layer {
+  position: absolute;
+  inset: 0;
+  will-change: transform;
+}
+
+/* Asegurar que el background siempre ocupa todo */
+.layer-bg {
+  z-index: 0;
+}
+
+.layer-mid {
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding-right: clamp(1.5rem, 6vw, 5rem);
+}
+
+/* Cuando el texto va a la derecha, la figura va a la izquierda */
+.chapter:has(.chapter-text--left) .layer-mid {
+  justify-content: flex-end;
+}
+
+.chapter:has(.chapter-text--right) .layer-mid {
+  justify-content: flex-start;
+  padding-left: clamp(1.5rem, 6vw, 5rem);
+  padding-right: 0;
+}
+
+.chapter:has(.chapter-text--center) .layer-mid {
+  justify-content: center;
+  align-items: flex-end;
+  padding-bottom: 0;
+}
+
+.layer-fg {
+  z-index: 2;
+  display: flex;
+  align-items: center;
+}
+
+/* ── FIGURE dentro del stage ── */
+.chapter-figure {
+  display: flex;
+  align-items: flex-end;
+  height: 100%;
+  padding-bottom: 0;
+}
+
+/* ── INDICADOR DE SCROLL DENTRO DEL CAPÍTULO ── */
+.chapter-scroll-hint {
+  position: absolute;
+  bottom: 2.5rem;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  opacity: 0.4;
+  pointer-events: none;
+  animation: breathe 2.5s ease-in-out infinite;
+}
+
+.chapter-scroll-hint span {
+  font-family: var(--font-display);
+  font-size: 0.5rem;
+  letter-spacing: 0.4em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+.chapter-scroll-hint-line {
+  width: 0.5px;
+  height: 40px;
+  background: linear-gradient(to bottom, var(--text-muted), transparent);
+}
+
+/* ── REVEAL de texto — entra al activarse el capítulo ── */
+.chapter.is-active .chapter-eyebrow {
+  animation: fadeUp 0.7s ease 0.2s both;
+}
+
+.chapter.is-active .chapter-title {
+  animation: fadeUp 0.8s ease 0.4s both;
+}
+
+.chapter.is-active .chapter-body {
+  animation: fadeUp 0.8s ease 0.6s both;
+}
+
+.chapter.is-active .chapter-quote {
+  animation: fadeUp 0.8s ease 0.8s both;
+}
+
+.chapter.is-active .data-card:nth-child(1) { animation: fadeUp 0.6s ease 0.3s both; }
+.chapter.is-active .data-card:nth-child(2) { animation: fadeUp 0.6s ease 0.5s both; }
+.chapter.is-active .data-card:nth-child(3) { animation: fadeUp 0.6s ease 0.7s both; }
+
+.chapter.is-active .mask-stat:nth-child(1) { animation: fadeUp 0.6s ease 0.4s both; }
+.chapter.is-active .mask-stat:nth-child(2) { animation: fadeUp 0.6s ease 0.6s both; }
+.chapter.is-active .mask-stat:nth-child(3) { animation: fadeUp 0.6s ease 0.8s both; }
+
+.chapter.is-active .chapter-figure {
+  animation: fadeUp 1s ease 0.3s both;
+}
+
+/* ── NÚMERO DE CAPÍTULO DECORATIVO ── */
+.chapter-deco-num {
+  position: absolute;
+  font-family: var(--font-display);
+  font-size: clamp(8rem, 20vw, 18rem);
+  font-weight: 900;
+  color: var(--accent);
+  opacity: 0.05;
+  line-height: 1;
+  letter-spacing: -0.05em;
+  pointer-events: none;
+  user-select: none;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+/* ── LÍNEA DE PROGRESO VERTICAL (capítulos) ── */
+.chapters-progress {
+  position: fixed;
+  right: 2rem;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  z-index: var(--z-nav);
+}
+
+/* ── EFECTO EMBERS / PARTÍCULAS POR CAPÍTULO ── */
+.chapter-embers {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.ember {
+  position: absolute;
+  width: 2px;
+  height: 2px;
+  border-radius: 50%;
+  background: var(--accent-warm);
+  opacity: 0;
+  animation: emberFloat var(--dur, 3.5s) ease-out infinite var(--delay, 0s);
+}
+
+.candle-light {
+  position: absolute;
+  width: 1.5px;
+  background: var(--gold);
+  border-radius: 1px;
+  opacity: 0;
+  animation: candleFlicker var(--dur, 2s) ease-in-out infinite var(--delay, 0s);
+}
+
+/* ── RESPONSIVE — scroll se vuelve normal en mobile ── */
+@media (max-width: 767px) {
+  .scroll-driver {
+    height: auto;
+  }
+
+  .stage {
+    position: relative;
+    height: auto;
+    overflow: visible;
+  }
+
+  .chapter {
+    position: relative;
+    opacity: 1;
+    pointer-events: all;
+    padding: 6rem 1.5rem 4rem;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .layer {
+    position: relative;
+    transform: none !important; /* Desactivar parallax en mobile */
+  }
+
+  .layer-bg {
+    position: fixed; /* El fondo queda fijo mientras scrolleas la sección */
+    z-index: -1;
+  }
+
+  .layer-mid,
+  .layer-fg {
+    position: relative;
+    margin-bottom: 2rem;
+  }
+
+  .chapter-data-grid {
+    position: relative;
+    top: auto; left: auto; right: auto;
+    transform: none;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-bottom: 2rem;
+  }
+
+  .chapter-text {
+    position: relative;
+    top: auto; left: auto; right: auto;
+    transform: none;
+    max-width: 100%;
+    padding: 0;
+  }
+
+  .chapter-mask-detail {
+    position: relative;
+    bottom: auto;
+    flex-wrap: wrap;
+    margin-bottom: 2rem;
+  }
+
+  /* Sin animaciones de reveal en mobile (rendimiento) */
+  .chapter.is-active .chapter-eyebrow,
+  .chapter.is-active .chapter-title,
+  .chapter.is-active .chapter-body,
+  .chapter.is-active .chapter-quote,
+  .chapter.is-active .data-card,
+  .chapter.is-active .mask-stat,
+  .chapter.is-active .chapter-figure {
+    animation: none;
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* ── ANIMACIONES DE SCROLL ── */
+@keyframes emberFloat {
+  0%   { opacity: 0; transform: translateY(0) translateX(0) scale(1); }
+  20%  { opacity: 0.8; }
+  80%  { opacity: 0.2; }
+  100% { opacity: 0; transform: translateY(-100px) translateX(var(--dx, 20px)) scale(0.3); }
+}
+
+@keyframes candleFlicker {
+  0%, 100% { opacity: 0; }
+  30%, 70%  { opacity: 0.5; }
+  50%       { opacity: 0.3; }
+}

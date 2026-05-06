@@ -1,0 +1,192 @@
+{
+  "meta": {
+    "title": "Seres del Ecuador — Diablo Huma & Cucurucho",
+    "description": "Plataforma cultural inmersiva sobre dos íconos del patrimonio ecuatoriano: el Diablo Huma y el Cucurucho."
+  },
+
+  "nav": {
+    "site_title": "Seres del Ecuador",
+    "toggle": {
+      "dh": "Diablo Huma",
+      "cu": "Cucurucho"
+    },
+    "lang": {
+      "es": "ES",
+      "en": "EN"
+    },
+    "audio": {
+      "on":  "Silenciar",
+      "off": "Activar audio"
+    },
+    "chapters": {
+      "portal":   "Inicio",
+      "ch1":      "Origen",
+      "ch2":      "Ritual",
+      "ch3":      "El Ser",
+      "ch4":      "Hoy",
+      "final":    "Identidad"
+    }
+  },
+
+  "portal": {
+    "eyebrow":   "Ecuador · Patrimonio Cultural Vivo",
+    "title":     "Seres de Identidad",
+    "subtitle":  "Dos figuras que definen el alma ecuatoriana. Uno nace del sol y la tierra. El otro, de la fe y el silencio.",
+    "scroll_hint": "Desplázate para comenzar"
+  },
+
+  "dh": {
+    "name":      "Diablo Huma",
+    "world":     "Espíritu de los Andes",
+
+    "ch1": {
+      "eyebrow":  "01 — Origen",
+      "title":    "El Ser de Dos Rostros",
+      "body":     "El Diablo Huma —cuya nombre en kichwa significa 'Cabeza de Diablo'— no es un demonio en el sentido occidental. Es una figura sagrada del pueblo indígena Kichwa del Ecuador, guardián de los ciclos del sol y el viento.",
+      "quote":    "No es el diablo de los conquistadores. Es el espíritu indomable que ningún tiempo pudo silenciar."
+    },
+
+    "ch2": {
+      "eyebrow":  "02 — Ritual",
+      "title":    "El Inti Raymi",
+      "body":     "La Fiesta del Sol se celebra cada junio, en torno al solsticio. El Diablo Huma lidera la danza portando un chicote —látigo ceremonial— con el que limpia el camino de malas energías. Puede bailar hasta cuatro días seguidos, como ofrenda al Taita Inti.",
+      "quote":    "La tierra tiembla cuando el Diablo Huma danza."
+    },
+
+    "ch3": {
+      "eyebrow":  "03 — La Máscara",
+      "title":    "Doce Cuernos, Dos Caras",
+      "body":     "Los doce cuernos representan los doce meses del año. Las dos caras encarnan la dualidad andina: Hanan Pacha (mundo superior) y Kay Pacha (mundo presente). Los colores del traje —rojo, verde, amarillo, azul— son la chakana andina tejida en lana.",
+      "quote":    "Ninguna cara mira hacia atrás. Ambas avanzan, simultáneamente, en todas las direcciones."
+    },
+
+    "ch4": {
+      "eyebrow":  "04 — Hoy",
+      "title":    "Una Tradición Viva",
+      "body":     "El Inti Raymi se celebra hoy en las provincias de Imbabura, Pichincha y Cotopaxi. Comunidades como Otavalo, Cayambe y Latacunga mantienen viva la danza. La tradición enfrenta el reto de preservarse sin convertirse en espectáculo turístico.",
+      "quote":    "Cada junio, los páramos recuerdan quiénes somos."
+    },
+
+    "data": {
+      "horns_label":     "Cuernos · meses del año",
+      "faces_label":     "Caras · dualidad andina",
+      "days_label":      "Días de danza · Inti Raymi",
+      "origin_label":    "Origen"
+    }
+  },
+
+  "cu": {
+    "name":      "El Cucurucho",
+    "world":     "Fe y Silencio",
+
+    "ch1": {
+      "eyebrow":  "01 — Origen",
+      "title":    "El Penitente Anónimo",
+      "body":     "El Cucurucho es la figura más icónica de la Semana Santa quitense. Vestido de blanco, con un capuchón cónico que cubre todo el rostro, desfila en silencio cargando una enorme cruz. Bajo la capucha no hay identidad: el rico y el pobre son iguales ante Dios.",
+      "quote":    "El silencio es tan profundo que se escucha el roce de los hábitos blancos contra las piedras centenarias."
+    },
+
+    "ch2": {
+      "eyebrow":  "02 — Semana Santa",
+      "title":    "La Procesión del Viernes Santo",
+      "body":     "Cada Viernes Santo, miles de cucuruchos descienden al Centro Histórico de Quito para la procesión del Jesús del Gran Poder —la más antigua y multitudinaria de América Latina. La ruta pasa por iglesias coloniales del siglo XVI: La Compañía, San Francisco, La Merced.",
+      "quote":    "Caminan descalzos sobre el adoquín colonial."
+    },
+
+    "ch3": {
+      "eyebrow":  "03 — El Anonimato",
+      "title":    "El Voto Personal",
+      "body":     "Muchos cucuruchos cumplen una promesa hecha en momentos de angustia o gratitud. El anonimato es esencial: la capucha borra rangos sociales. Algunos cargan cruces de hasta cien kilos. Otros arrastran cadenas. Es el pago de una deuda sagrada.",
+      "quote":    "La fe no tiene apellido bajo el capuchón blanco."
+    },
+
+    "ch4": {
+      "eyebrow":  "04 — Hoy",
+      "title":    "Quito, Patrimonio Vivo",
+      "body":     "Desde que la UNESCO declaró el Centro Histórico de Quito Patrimonio de la Humanidad en 1978, la procesión es también un acto de identidad urbana. El cucurucho del siglo XXI convive entre la devoción auténtica y la mirada del turismo internacional.",
+      "quote":    "La tradición no se conserva en un museo. Se camina."
+    },
+
+    "data": {
+      "year_label":      "Año · llegada franciscana",
+      "anon_label":      "Identidad visible · anonimato",
+      "cross_label":     "Kilos de cruz · máximo",
+      "promise_label":   "Votos cumplidos · fe"
+    }
+  },
+
+  "final": {
+    "eyebrow":  "Identidad Ecuatoriana",
+    "title":    "Tierra y Fe",
+    "subtitle": "Una Sola Identidad",
+    "body":     "El Diablo Huma y el Cucurucho no son opuestos. Son los dos pulsos de Ecuador: el latido indígena que viene de los Andes y el latido mestizo que viene de las iglesias coloniales. Ambos danzan, ambos callan, ambos cargan algo sagrado.",
+    "coda":     "¿Qué significa ser ecuatoriano? La respuesta está en ambos."
+  },
+
+  "quiz": {
+    "title":      "¿Cuál eres tú?",
+    "subtitle":   "Un ejercicio de exploración cultural",
+    "disclaimer": "Este quiz es un recurso lúdico y cultural, sin implicación étnica ni diagnóstica.",
+    "start":      "Comenzar",
+    "next":       "Siguiente",
+    "restart":    "Volver a intentar",
+    "result":     {
+      "dh": {
+        "title":  "Eres Diablo Huma",
+        "body":   "Llevas la tierra y el viento adentro. Tu espíritu es libre, dual, indómito. La música y la danza son tu lenguaje."
+      },
+      "cu": {
+        "title":  "Eres Cucurucho",
+        "body":   "Tu fortaleza viene del silencio y la fe. Cargas lo que otros no pueden ver. Tu devoción es tu identidad más profunda."
+      }
+    },
+    "share": "Compartir resultado",
+    "questions": [
+      {
+        "q":   "¿Cómo expresas lo que sientes?",
+        "a":   "Bailando, moviéndome, con el cuerpo",
+        "b":   "En silencio, hacia adentro"
+      },
+      {
+        "q":   "¿Qué elemento te representa más?",
+        "a":   "El fuego y el viento",
+        "b":   "La piedra y la fe"
+      },
+      {
+        "q":   "¿Prefieres celebrar en?",
+        "a":   "Una plaza, al sol, con música",
+        "b":   "Una iglesia o espacio de recogimiento"
+      },
+      {
+        "q":   "¿Tu identidad es?",
+        "a":   "Visible, colorida, orgullosa",
+        "b":   "Profunda, anónima, íntima"
+      },
+      {
+        "q":   "¿Qué cargas contigo?",
+        "a":   "La herencia de la tierra",
+        "b":   "Un voto personal, una promesa"
+      },
+      {
+        "q":   "¿Qué mes te pertenece?",
+        "a":   "Junio — el solsticio y la fiesta",
+        "b":   "Abril — la reflexión y la procesión"
+      }
+    ]
+  },
+
+  "gallery": {
+    "title":      "Galería",
+    "close":      "Cerrar",
+    "prev":       "Anterior",
+    "next":       "Siguiente",
+    "credit":     "Foto:"
+  },
+
+  "footer": {
+    "title":      "Seres del Ecuador",
+    "credits":    "Un proyecto de preservación cultural digital",
+    "sources":    "Ver fuentes y referencias",
+    "share":      "Compartir este sitio"
+  }
+}
