@@ -5,11 +5,31 @@
 
 const gallery = (() => {
 
-  /* Datos de la galería — se reemplazarán con fotos reales */
-  /* Estructura: { src, thumb, alt, credit, universe: 'dh'|'cu' } */
   const ITEMS = [
-    /* Placeholder hasta tener fotos con derechos */
-    /* { src: 'assets/images/dh/danza-01.jpg', thumb: 'assets/images/dh/danza-01-thumb.jpg', alt: 'Danzante del Inti Raymi en Otavalo', credit: 'Fotógrafo pendiente', universe: 'dh' }, */
+    /* ── Diablo Huma ── */
+    { src: 'assets/images/dh/dh-cuerpo-completo.png',  alt: 'Diablo Huma, traje completo con los doce cuernos',         credit: 'Archivo Cultural',        universe: 'dh' },
+    { src: 'assets/images/dh/dh-mascara-01.jpg',       alt: 'Máscara del Diablo Huma — detalle frontal',                credit: 'Archivo Cultural',        universe: 'dh' },
+    { src: 'assets/images/dh/dh-mascara-02.png',       alt: 'Máscara del Diablo Huma — dos rostros, chakana andina',    credit: 'Archivo Cultural',        universe: 'dh' },
+    { src: 'assets/images/dh/dh-bailando-01.jpg',      alt: 'Diablo Huma danzando en el Inti Raymi',                    credit: 'Archivo Cultural',        universe: 'dh' },
+    { src: 'assets/images/dh/dh-bailando-02.jpg',      alt: 'Danza del Diablo Huma durante el solsticio de junio',      credit: 'Archivo Cultural',        universe: 'dh' },
+    { src: 'assets/images/dh/dh-desfile-01.jpeg',      alt: 'Diablo Huma en procesión del Inti Raymi',                  credit: 'Archivo Cultural',        universe: 'dh' },
+    { src: 'assets/images/dh/dh-grupo-mascara.jpeg',   alt: 'Grupo de danzantes con máscara del Diablo Huma',           credit: 'Archivo Cultural',        universe: 'dh' },
+    { src: 'assets/images/dh/dh-animado-01.jpg',       alt: 'Ilustración del Diablo Huma — representación artística',   credit: 'Archivo Cultural',        universe: 'dh' },
+    { src: 'assets/images/dh/dh-animado-02.jpg',       alt: 'Ilustración del Diablo Huma — versión contemporánea',      credit: 'Archivo Cultural',        universe: 'dh' },
+    { src: 'assets/images/dh/dh-mascara-moderna.jpeg', alt: 'La máscara del Diablo Huma trasciende culturas y épocas',  credit: 'Archivo Cultural',        universe: 'dh' },
+
+    /* ── Cucurucho ── */
+    { src: 'assets/images/cu/cu-cuerpo-completo.png',  alt: 'Cucurucho de cuerpo completo — hábito blanco y capuchón',  credit: 'Archivo Cultural',        universe: 'cu' },
+    { src: 'assets/images/cu/cu-principal.jpeg',       alt: 'Cucurucho en primer plano — identidad oculta bajo la fe',  credit: 'Archivo Cultural',        universe: 'cu' },
+    { src: 'assets/images/cu/cu-retrato-01.jpeg',      alt: 'Retrato del Cucurucho en Semana Santa',                    credit: 'Archivo Cultural',        universe: 'cu' },
+    { src: 'assets/images/cu/cu-retrato-02.jpg',       alt: 'El Cucurucho — anonimato como acto de fe',                 credit: 'Archivo Cultural',        universe: 'cu' },
+    { src: 'assets/images/cu/cu-desfile-01.jpeg',      alt: 'Procesión del Viernes Santo en el Centro Histórico',       credit: 'Archivo Cultural',        universe: 'cu' },
+    { src: 'assets/images/cu/cu-desfile-quito.jpg',    alt: 'Cucuruchos en desfile por las calles de Quito',            credit: 'Archivo Cultural',        universe: 'cu' },
+    { src: 'assets/images/cu/cu-desfile-02.webp',      alt: 'Multitud de cucuruchos en la procesión anual',             credit: 'Archivo Cultural',        universe: 'cu' },
+    { src: 'assets/images/cu/cu-desfile-03.webp',      alt: 'Cucuruchos cargando la cruz en Semana Santa',              credit: 'Archivo Cultural',        universe: 'cu' },
+    { src: 'assets/images/cu/cu-grupo.jpg',            alt: 'Grupo de cucuruchos reunidos en el Centro Histórico',      credit: 'Archivo Cultural',        universe: 'cu' },
+    { src: 'assets/images/cu/cu-pase.jpg',             alt: 'El pase procesional del Cucurucho',                        credit: 'Archivo Cultural',        universe: 'cu' },
+    { src: 'assets/images/cu/cu-antiguo.webp',         alt: 'Cucuruchos en fotografía histórica de Quito',              credit: 'Archivo Histórico',       universe: 'cu' },
   ];
 
   let currentIndex = 0;

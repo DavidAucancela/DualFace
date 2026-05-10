@@ -64,7 +64,11 @@ const theme = (() => {
   function scrollToUniverse(themeId) {
     const target = document.querySelector(`[data-universe="${themeId}"]`);
     if (!target) return;
-    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    const navHeight = parseFloat(
+      getComputedStyle(document.documentElement).getPropertyValue('--nav-height')
+    ) || 64;
+    const top = target.getBoundingClientRect().top + window.scrollY - navHeight;
+    window.scrollTo({ top, behavior: 'smooth' });
   }
 
   /* ── Toggle: si está en DH cambia a CU y viceversa ── */

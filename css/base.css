@@ -16,13 +16,14 @@
 html {
   scroll-behavior: smooth;
   font-size: 16px;
+  overflow-x: hidden;       /* aquí sí: se propaga al viewport sin crear scroll container en body */
+  scroll-padding-top: var(--nav-height); /* anclas respetan el nav */
 }
 
 body {
   font-family: 'Cormorant Garamond', Georgia, serif;
   background: var(--bg-primary);
   color: var(--text);
-  overflow-x: hidden;
   transition: background 1s ease;
   cursor: none; /* cursor personalizado — ver components.css */
 }
@@ -195,6 +196,17 @@ p {
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
   }
+}
+
+/* ── Scrollbar personalizado ── */
+::-webkit-scrollbar        { width: 4px; }
+::-webkit-scrollbar-track  { background: var(--bg-secondary); }
+::-webkit-scrollbar-thumb  { background: var(--accent); border-radius: 2px; }
+::-webkit-scrollbar-thumb:hover { background: var(--accent-warm); }
+
+html {
+  scrollbar-width: thin;
+  scrollbar-color: var(--accent) var(--bg-secondary);
 }
 
 /* ── Responsive base ── */

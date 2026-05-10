@@ -22,9 +22,6 @@
   <link rel="stylesheet" href="css/components.css">
   <link rel="stylesheet" href="css/scroll.css">
 
-  <!-- GSAP -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js" defer></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js" defer></script>
 </head>
 <body>
 
@@ -212,8 +209,10 @@
         </div>
         <div class="layer layer-mid" data-speed="0.5">
           <div class="chapter-figure">
-            <!-- SVG ilustración del Diablo Huma — se añade en siguiente iteración -->
-            <div class="figure-placeholder figure-placeholder--dh" aria-hidden="true"></div>
+            <img src="assets/images/dh/dh-cuerpo-completo.png"
+                 alt="Diablo Huma con traje ceremonial completo"
+                 class="chapter-figure-img chapter-figure-img--dh"
+                 loading="lazy">
           </div>
         </div>
         <div class="layer layer-fg" data-speed="0.8">
@@ -320,7 +319,10 @@
         </div>
         <div class="layer layer-mid" data-speed="0.5">
           <div class="chapter-figure">
-            <div class="figure-placeholder figure-placeholder--cu" aria-hidden="true"></div>
+            <img src="assets/images/cu/cu-cuerpo-completo.png"
+                 alt="Cucurucho de cuerpo completo con hábito blanco"
+                 class="chapter-figure-img chapter-figure-img--cu"
+                 loading="lazy">
           </div>
         </div>
         <div class="layer layer-fg" data-speed="0.8">
@@ -524,6 +526,10 @@
   <!-- ═══════════════════════════════════════════
        SCRIPTS
   ════════════════════════════════════════════ -->
+  <!-- GSAP — debe cargar antes que los scripts locales -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+
   <script src="js/i18n.js"></script>
   <script src="js/theme.js"></script>
   <script src="js/scroll.js"></script>
