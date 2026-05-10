@@ -85,7 +85,7 @@ const gallery = (() => {
     currentIndex = index;
 
     lightbox.hidden = false;
-    document.body.style.overflow = 'hidden';
+    document.documentElement.style.overflowY = 'hidden';
     updateLightboxContent();
 
     /* Focus trap */
@@ -94,7 +94,7 @@ const gallery = (() => {
 
   function closeLightbox() {
     lightbox.hidden = true;
-    document.body.style.overflow = '';
+    document.documentElement.style.overflowY = '';
   }
 
   function updateLightboxContent() {

@@ -90,96 +90,50 @@
   <div id="chapter-label" aria-live="polite" aria-atomic="true"></div>
 
   <!-- ═══════════════════════════════════════════
-       PORTAL — HERO DE ENTRADA
+       PORTAL — SPLIT SCREEN INMERSIVO
   ════════════════════════════════════════════ -->
   <section id="portal" class="portal" aria-label="Portal de entrada">
 
-    <!-- Fondo atmosférico -->
-    <div class="portal-bg" aria-hidden="true">
-      <div class="portal-half portal-half--left"></div>
-      <div class="portal-half portal-half--right"></div>
-      <div class="portal-divider"></div>
-    </div>
+    <div class="portal-split" id="portal-split">
 
-    <!-- Arco / puerta SVG -->
-    <div class="portal-arch" aria-hidden="true">
-      <svg viewBox="0 0 800 600" preserveAspectRatio="xMidYMid meet" fill="none">
-        <!-- Pilares -->
-        <rect x="80"  y="200" width="44" height="400" rx="2" fill="currentColor" opacity=".08"/>
-        <rect x="676" y="200" width="44" height="400" rx="2" fill="currentColor" opacity=".08"/>
-        <!-- Arco exterior -->
-        <path d="M80 200 Q80 20 400 20 Q720 20 720 200"
-              stroke="var(--accent)" stroke-width="1" opacity=".35"/>
-        <!-- Arco interior -->
-        <path d="M110 205 Q110 55 400 55 Q690 55 690 205"
-              stroke="var(--gold)" stroke-width=".5" opacity=".25"/>
-        <!-- Joya central -->
-        <circle cx="400" cy="20" r="18" stroke="var(--gold)" stroke-width=".8" opacity=".5"/>
-        <circle cx="400" cy="20" r="7"  fill="var(--gold)" opacity=".3"/>
-        <!-- Decoración pilares -->
-        <rect x="80"  y="185" width="44" height="20" fill="var(--accent)" opacity=".2"/>
-        <rect x="676" y="185" width="44" height="20" fill="var(--accent)" opacity=".2"/>
-        <!-- Banda inferior -->
-        <line x1="80" y1="590" x2="720" y2="590" stroke="var(--accent)" stroke-width=".5" opacity=".2"/>
-      </svg>
-    </div>
-
-    <!-- Siluetas de personajes -->
-    <div class="portal-figures" aria-hidden="true">
-      <!-- Silueta Diablo Huma (izquierda) -->
-      <svg class="figure-silhouette figure-silhouette--dh" viewBox="0 0 200 400" fill="none">
-        <ellipse cx="100" cy="155" rx="44" ry="54" fill="var(--accent)" opacity=".4"/>
-        <rect    x="58" y="205" width="84" height="175" rx="8" fill="var(--accent)" opacity=".4"/>
-        <!-- Cuernos -->
-        <ellipse cx="100" cy="93" rx="11" ry="28" fill="var(--accent)" opacity=".5"/>
-        <ellipse cx="72"  cy="102" rx="8" ry="22" fill="var(--accent-warm)" transform="rotate(-20 72 102)" opacity=".45"/>
-        <ellipse cx="128" cy="102" rx="8" ry="22" fill="var(--accent-warm)" transform="rotate(20 128 102)"  opacity=".45"/>
-        <ellipse cx="52"  cy="118" rx="7" ry="18" fill="var(--gold)" transform="rotate(-35 52 118)" opacity=".35"/>
-        <ellipse cx="148" cy="118" rx="7" ry="18" fill="var(--gold)" transform="rotate(35 148 118)"  opacity=".35"/>
-        <!-- Glow tips -->
-        <circle cx="100" cy="67"  r="4" fill="var(--gold)" opacity=".7"/>
-        <circle cx="66"  cy="82"  r="3" fill="var(--gold)" opacity=".5"/>
-        <circle cx="134" cy="82"  r="3" fill="var(--gold)" opacity=".5"/>
-      </svg>
-
-      <!-- Silueta Cucurucho (derecha) -->
-      <svg class="figure-silhouette figure-silhouette--cu" viewBox="0 0 200 400" fill="none">
-        <!-- Cono -->
-        <polygon points="100,8 55,190 145,190" fill="var(--gold)" opacity=".35"/>
-        <!-- Cuerpo -->
-        <rect x="48" y="188" width="104" height="195" rx="6" fill="var(--gold)" opacity=".3"/>
-        <!-- Ojos -->
-        <ellipse cx="84"  cy="165" rx="9" ry="12" fill="var(--bg-primary)" opacity=".6"/>
-        <ellipse cx="116" cy="165" rx="9" ry="12" fill="var(--bg-primary)" opacity=".6"/>
-        <!-- Cruz -->
-        <rect x="127" y="110" width="7" height="150" rx="2" fill="var(--accent)" opacity=".4"/>
-        <rect x="114" y="148" width="33" height="7"  rx="2" fill="var(--accent)" opacity=".4"/>
-      </svg>
-    </div>
-
-    <!-- Contenido central -->
-    <div class="portal-content">
-      <p class="portal-eyebrow text-eyebrow" data-i18n="portal.eyebrow">
-        Ecuador · Patrimonio Cultural Vivo
-      </p>
-
-      <h1 class="portal-title">
-        <span class="portal-title__dh" aria-hidden="true">Diablo Huma</span>
-        <span class="portal-title__sep" aria-hidden="true">&</span>
-        <span class="portal-title__cu" aria-hidden="true">Cucurucho</span>
-        <span class="sr-only">Diablo Huma y Cucurucho — Seres del Ecuador</span>
-      </h1>
-
-      <p class="portal-subtitle" data-i18n="portal.subtitle">
-        Dos figuras que definen el alma ecuatoriana.
-        Uno nace del sol y la tierra. El otro, de la fe y el silencio.
-      </p>
-
-      <div class="portal-scroll-hint" aria-hidden="true">
-        <div class="scroll-line"></div>
-        <span data-i18n="portal.scroll_hint">Desplázate para comenzar</span>
+      <!-- Lado Diablo Huma -->
+      <div class="portal-side portal-side--dh" id="portal-dh"
+           data-universe="dh" role="button" tabindex="0"
+           aria-label="Explorar el universo del Diablo Huma">
+        <div class="portal-side-bg portal-side-bg--dh" aria-hidden="true"></div>
+        <img src="assets/images/dh/dh-cuerpo-completo.png"
+             class="portal-character portal-character--dh"
+             alt="Diablo Huma con traje ceremonial completo"
+             loading="eager">
+        <div class="portal-side-info">
+          <span class="portal-side-eyebrow text-eyebrow">Espíritu de los Andes</span>
+          <h2 class="portal-char-name portal-char-name--dh">Diablo<br>Huma</h2>
+          <span class="portal-enter-cta">Explorar ↓</span>
+        </div>
       </div>
-    </div>
+
+      <!-- Seam central -->
+      <div class="portal-center-bar" aria-hidden="true">
+        <span class="portal-seam-badge">Ecuador</span>
+      </div>
+
+      <!-- Lado Cucurucho -->
+      <div class="portal-side portal-side--cu" id="portal-cu"
+           data-universe="cu" role="button" tabindex="0"
+           aria-label="Explorar el universo del Cucurucho">
+        <div class="portal-side-bg portal-side-bg--cu" aria-hidden="true"></div>
+        <img src="assets/images/cu/cu-cuerpo-completo.png"
+             class="portal-character portal-character--cu"
+             alt="Cucurucho con hábito ceremonial y capuchón"
+             loading="eager">
+        <div class="portal-side-info portal-side-info--right">
+          <span class="portal-side-eyebrow text-eyebrow">Fe y Silencio</span>
+          <h2 class="portal-char-name portal-char-name--cu">Cucu<br>rucho</h2>
+          <span class="portal-enter-cta">Explorar ↓</span>
+        </div>
+      </div>
+
+    </div><!-- .portal-split -->
 
     <!-- Partículas decorativas -->
     <div class="portal-particles" aria-hidden="true">
@@ -191,6 +145,12 @@
       <span class="particle" style="--x:74%;--y:30%;--size:2px;--dur:11s;--delay:4s;"></span>
       <span class="particle" style="--x:35%;--y:65%;--size:2px;--dur:9s;--delay:1.5s;"></span>
       <span class="particle" style="--x:90%;--y:50%;--size:2px;--dur:13s;--delay:.6s;"></span>
+    </div>
+
+    <!-- Hint de scroll -->
+    <div class="portal-scroll-hint" aria-hidden="true">
+      <div class="scroll-line"></div>
+      <span data-i18n="portal.scroll_hint">Desplázate para comenzar</span>
     </div>
 
   </section>

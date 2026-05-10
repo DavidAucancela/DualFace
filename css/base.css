@@ -198,16 +198,9 @@ p {
   }
 }
 
-/* ── Scrollbar personalizado ── */
-::-webkit-scrollbar        { width: 4px; }
-::-webkit-scrollbar-track  { background: var(--bg-secondary); }
-::-webkit-scrollbar-thumb  { background: var(--accent); border-radius: 2px; }
-::-webkit-scrollbar-thumb:hover { background: var(--accent-warm); }
-
-html {
-  scrollbar-width: thin;
-  scrollbar-color: var(--accent) var(--bg-secondary);
-}
+/* Scrollbar oculto — navegación via barra de progreso superior */
+::-webkit-scrollbar { width: 0; height: 0; }
+html { scrollbar-width: none; }
 
 /* ── Responsive base ── */
 @media (max-width: 767px) {

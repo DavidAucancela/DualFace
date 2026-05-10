@@ -62,7 +62,7 @@ const theme = (() => {
 
   /* ── Scroll suave al inicio del universo seleccionado ── */
   function scrollToUniverse(themeId) {
-    const target = document.querySelector(`[data-universe="${themeId}"]`);
+    const target = document.querySelector(`.scroll-driver[data-universe="${themeId}"]`);
     if (!target) return;
     const navHeight = parseFloat(
       getComputedStyle(document.documentElement).getPropertyValue('--nav-height')

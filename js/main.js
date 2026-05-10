@@ -31,13 +31,17 @@ document.addEventListener('DOMContentLoaded', async () => {
   gallery.init();
   /* audio: el botón se enlaza en audio.js vía DOMContentLoaded, toggle() maneja el primer clic */
 
-  /* ── 5. Cursor personalizado ── */
+  /* ── 5. Portal y nav dots ── */
+  initPortal();
+  initNavDots();
+
+  /* ── 6. Cursor personalizado ── */
   initCursor();
 
-  /* ── 6. Progress bar de scroll ── */
+  /* ── 7. Progress bar de scroll ── */
   initProgressBar();
 
-  /* ── 7. Selector de idioma ── */
+  /* ── 8. Selector de idioma ── */
   initLangSelector();
 
   /* ── Marcar app como lista ── */
@@ -103,4 +107,47 @@ function initLangSelector() {
   });
 }
 
-/* audio.js se autoiinicia en el primer clic del botón #audio-btn — no se necesita listener global */
+/* ── PORTAL — click en cada lado activa el tema ── */
+function initPortal() {
+  document.querySelectorAll('.portal-side[data-universe]').forEach(side => {
+    const universe = side.dataset.universe;
+    side.addEventListener('click', () => theme.apply(universe));
+    side.addEventListener('keydown', e => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        theme.apply(universe);
+      }
+    });
+  });
+}
+
+/* ── NAV DOTS — navegar a capítulo por clic ── */
+function initNavDots() {
+  document.querySelectorAll('.nav-dot').forEach(dot => {
+    const chapter = parseInt(dot.dataset.chapter);
+    dot.setAttribute('role', 'button');
+    dot.setAttribute('tabindex', '0');
+    dot.addEventListener('click', () => scrollToChapter(chapter));
+    dot.addEventListener('keydown', e => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        scrollToChapter(chapter);
+      }
+    });
+  });
+}
+
+function scrollToChapter(chapter) {
+  if (chapter === 0) {
+    document.getElementById('portal')?.scrollIntoView({ behavior: 'smooth' });
+    return;
+  }
+  const activeDriver = document.querySelector(`.scroll-driver[data-universe="${theme.current}"]`);
+  if (!activeDriver) return;
+  const driverTop    = activeDriver.getBoundingClientRect().top + window.scrollY;
+  const driverScroll = activeDriver.scrollHeight - window.innerHeight;
+  const fraction     = (chapter - 1) / 4;
+  window.scrollTo({ top: driverTop + driverScroll * fraction, behavior: 'smooth' });
+}
+
+/* audio.js se autoinicia en el primer clic del botón #audio-btn — no se necesita listener global */
